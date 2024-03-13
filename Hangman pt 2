@@ -1,0 +1,23 @@
+def main ():
+    secret = "prasmul"
+    guess = "_" *len(secret)
+    correct = []
+    print ("The word have",len(secret),"letters")
+chances = 6
+
+while chances > 0 :
+    guess = input("Tebak katanya :")
+    if len(guess) !=1:
+        print("Masukan hurufnya :")
+    elif not guess.isalpha():
+        print("Masukan hurufnya :")
+    elif guess.lower() in guess:
+        print("Kamu udah tebak katanya")
+    else :
+        guess.append(guess.lower())
+        if guess.lower() in secrete.lower ():
+            print("kamu berhasil tebak!")
+        else:
+            chances -= 1
+            print("Kamu salah, kamu sisa kesempatan {} kali".format(chances))
+        
