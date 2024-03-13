@@ -1,0 +1,42 @@
+def main():
+    secret_word = "prasmul"
+    guess = "_ " * len(secret_word)
+    correct = []
+    wrong_guesses = 0 
+    guessed_letters = []
+
+    while True:
+        print("tebak katanya", guess)
+        letter = input("tebak huruf: ").lower()
+
+        if letter in guessed_letters:
+            print("benar")
+            continue
+        else:
+            guessed_letters.append(letter)
+
+        if letter in secret_word:
+            correct.append(letter)
+            newguess = ""
+            for i in range(0, len(secret_word)*2, 2): 
+                if secret_word[i//2] == letter:
+                    newguess += letter + " "
+                else:
+                    newguess += guess[i:i+2]  
+            guess = newguess
+            print("kamu bener")
+            if "_" not in guess:
+                print("Selamat kamu menang !")
+                break
+        elif not letter.isalpha():
+            print("Masukan hurunya")
+        else:
+            print("YAH kamu salah")
+            wrong_guesses += 1
+            print(f"Kesempatan mu sisa {6 - wrong_guesses}")
+        
+        if wrong_guesses == 6:
+            print("Kamu KALAH. kata yang benar:", secret_word)
+            break
+
+main()
